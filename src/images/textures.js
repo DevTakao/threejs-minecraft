@@ -18,4 +18,4 @@ groundTexture.magFilter = NearestFilter;
 groundTexture.wrapS = RepeatWrapping;
 groundTexture.wrapT = RepeatWrapping;
 
-export default { dirtTexture, logTexture, grassTexture, glassTexture, woodTexture, groundTexture };
+export { dirtTexture, logTexture, grassTexture, glassTexture, woodTexture, groundTexture };
