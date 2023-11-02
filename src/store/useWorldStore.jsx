@@ -1,36 +1,38 @@
 import { nanoid } from "nanoid";
 import create from "zustand";
+import { persist } from "zustand/middleware";
 
-export const useWorldStore = create((set) => ({
-  texture: "dirt",
-  cubes: [
-    {
-      key: nanoid(),
-      pos: [2, 0.5, 0],
+// Define your store with the persist middleware
+export const useWorldStore = create(
+  persist(
+    (set) => ({
       texture: "dirt",
-    },
+      cubes: [],
+      addCube: (x, y, z) => {
+        set((prev) => ({
+          cubes: [...prev.cubes, { key: nanoid(), pos: [x, y, z], texture: prev.texture }],
+        }));
+      },
+      removeCube: (x, y, z) => {
+        set((prev) => ({
+          cubes: prev.cubes.filter(({ pos }) => {
+            const [_x, _y, _z] = pos;
+            return _x !== x || _y !== y || _z !== z;
+          }),
+        }));
+      },
+      setTexture: (texture) => {
+        set({ texture: texture });
+      },
+      resetWorld: () => {
+        set({
+          texture: "dirt",
+          cubes: [],
+        });
+      },
+    }),
     {
-      key: nanoid(),
-      pos: [1, 0.5, 0],
-      texture: "wood",
-    },
-  ],
-  addCube: (x, y, z) => {
-    set((prev) => ({
-      cubes: [...prev.cubes, { key: nanoid(), pos: [x, y, z], texture: prev.texture }],
-    }));
-  },
-  removeCube: (x, y, z) => {
-    set((prev) => ({
-      cubes: prev.cubes.filter(({ pos }) => {
-        const [_x, _y, _z] = pos;
-        return _x !== x || _y !== y || _z !== z;
-      }),
-    }));
-  },
-  setTexture: (texture) => {
-    set({ texture: texture });
-  },
-  saveWorld: () => {},
-  resetWorld: () => {},
-}));
+      name: "threejs-minecraft-storage",
+    }
+  )
+);

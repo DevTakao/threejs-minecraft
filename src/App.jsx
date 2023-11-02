@@ -6,10 +6,12 @@ import Player from "./components/Player";
 import FPV from "./components/FPV";
 import Cubes from "./components/Cubes";
 import TextureMenu from "./components/TextureMenu";
+import Menu from "./components/Menu";
 
 function App() {
   return (
     <>
+      <Menu />
       <Canvas>
         <Sky sunPosition={[100, 100, 20]} />
         <ambientLight intensity={0.5} />
