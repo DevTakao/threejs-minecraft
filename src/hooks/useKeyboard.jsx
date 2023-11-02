@@ -17,18 +17,18 @@ const actionByKey = (key) => {
   return keyActionMap[key];
 };
 
-const useKeyboard = () => {
+export const useKeyboard = () => {
   const [actions, setActions] = useState({
     moveForward: false,
     moveBackward: false,
     moveLeft: false,
     moveRight: false,
     jump: false,
-    texture1: false,
-    texture2: false,
-    texture3: false,
-    texture4: false,
-    texture5: false,
+    dirt: false,
+    grass: false,
+    glass: false,
+    wood: false,
+    log: false,
   });
 
   const handleKeyDown = useCallback((e) => {
@@ -40,7 +40,6 @@ const useKeyboard = () => {
 
   const handleKeyUp = useCallback((e) => {
     const action = actionByKey(e.code);
-    console.log(action);
     if (action) {
       setActions((prev) => ({ ...prev, [action]: false }));
     }
@@ -58,5 +57,3 @@ const useKeyboard = () => {
 
   return actions;
 };
-
-export default useKeyboard;

@@ -5,6 +5,7 @@ import Ground from "./components/Ground";
 import Player from "./components/Player";
 import FPV from "./components/FPV";
 import Cubes from "./components/Cubes";
+import TextureMenu from "./components/TextureMenu";
 
 function App() {
   return (
@@ -19,7 +20,10 @@ function App() {
           <Ground />
         </Physics>
       </Canvas>
-      <div className="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] text-white z-50">+</div>
+      <TextureMenu />
+      <div className="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] text-white z-50 select-none pointer-events-none">
+        +
+      </div>
     </>
   );
 }

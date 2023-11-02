@@ -10,10 +10,7 @@ const Cube = ({ position, texture }) => {
 
   const [addCube, removeCube] = useWorldStore((state) => [state.addCube, state.removeCube]);
 
-  console.log(texture);
-
   const activeTexture = textures[`${texture}Texture`];
-  console.log("active texture", activeTexture);
 
   return (
     <mesh
