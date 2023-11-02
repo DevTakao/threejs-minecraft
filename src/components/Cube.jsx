@@ -65,7 +65,7 @@ const Cube = ({ position, texture }) => {
       <meshStandardMaterial
         map={activeTexture}
         emissiveIntensity={isHovered ? 0.1 : 0}
-        emissive={0xffffff}
+        emissive={"white"}
         transparent={true}
         opacity={texture === "glass" ? 0.6 : 1}
         attach="material"
