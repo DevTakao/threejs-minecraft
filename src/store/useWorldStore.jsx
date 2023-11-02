@@ -20,7 +20,14 @@ export const useWorldStore = create((set) => ({
       cubes: [...prev.cubes, { key: nanoid(), pos: [x, y, z], texture: prev.texture }],
     }));
   },
-  removeCube: () => {},
+  removeCube: (x, y, z) => {
+    set((prev) => ({
+      cubes: prev.cubes.filter(({ pos }) => {
+        const [_x, _y, _z] = pos;
+        return _x !== x || _y !== y || _z !== z;
+      }),
+    }));
+  },
   setTexture: () => {},
   saveWorld: () => {},
   resetWorld: () => {},
