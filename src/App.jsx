@@ -7,10 +7,12 @@ import FPV from "./components/FPV";
 import Cubes from "./components/Cubes";
 import TextureMenu from "./components/TextureMenu";
 import Menu from "./components/Menu";
+import Instructions from "./components/Instructions";
 
 function App() {
   return (
     <>
+      <Instructions />
       <Menu />
       <Canvas>
         <Sky sunPosition={[100, 100, 20]} />
